@@ -18,10 +18,6 @@ public class DBNoteRepository implements NoteRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-	
 	@Override
 	public List<Note> findAll() {
 		return entityManager.createQuery("from Note", Note.class).getResultList();

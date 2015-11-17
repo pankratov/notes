@@ -15,12 +15,8 @@ import ru.pankratov.notes.domain.Tag;
 @RequestMapping("/rest/tags")
 public class TagsController {
 
-	private TagRepository tagRepository;
-	
 	@Autowired
-	public void setTagRepository(TagRepository tagRepository) {
-		this.tagRepository = tagRepository;
-	}
+	private TagRepository tagRepository;
 	
 	@RequestMapping(method = RequestMethod.GET, produces={MediaType.APPLICATION_JSON_VALUE})
 	public List<Tag> readAll() {

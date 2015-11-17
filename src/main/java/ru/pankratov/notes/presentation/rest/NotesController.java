@@ -24,13 +24,9 @@ import ru.pankratov.notes.presentation.exception.BadTitleMessage;
 @RequestMapping("/rest/notes")
 public class NotesController {
 
+	@Autowired
 	private NoteRepository noteRepository;
 
-	@Autowired
-	public void setNoteRepository(NoteRepository noteRepository) {
-		this.noteRepository = noteRepository;
-	}
-	
 	@RequestMapping(method = RequestMethod.GET, produces={MediaType.APPLICATION_JSON_VALUE})
 	public List<Note> readAll() {
 		return noteRepository.findAll();
