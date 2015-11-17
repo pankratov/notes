@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Заметки</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<script src="resources/js/knockout-3.3.0.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Заметки <small>редактирование</small></h1>
+		</div>
+
+		<form>
+			<div class="alert alert-danger alert-dismissable" data-bind="visible: alert">
+			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			  <strong>Произошла ошибка!</strong> <span data-bind="text: alertMsg().error"></span>
+			</div>
+			
+			<div class="form-group">
+				<label for="title">Заголовок</label> 
+				<input type="text" class="form-control" placeholder="Заголовок" id="title" data-bind="value: title">
+			</div>
+			<div class="form-group">
+				<label for="body">Текст</label> 
+				<textarea class="form-control" rows="5" id="body" placeholder="Текст" data-bind="value: body"></textarea>
+			</div>
+			<div class="form-group" data-bind="foreach: tags">
+				<label class="checkbox-inline">
+					<input type="checkbox" data-bind="checkedValue: $data, checked: $root.checkedTags">
+					<span data-bind="text: value"></span>
+				</label>
+			</div>		
+			
+			<button class="btn btn-success navbar-btn" type="submit" data-bind="click: addNote">
+					<span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Сохранить
+			</button>
+			<a href="index.html">
+				<button class="btn btn-primary navbar-btn" type="button">
+					<span class=" glyphicon glyphicon-arrow-left "></span>&nbsp;Вернуться
+				</button>
+			</a>
+		</form>
+	</div>
+
+	<script src="resources/js/jquery-2.1.4.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/edit.js"></script>
+</body>
+</html>
