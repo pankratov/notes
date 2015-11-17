@@ -2,9 +2,9 @@ package ru.pankratov.notes.dao;
 
 import javax.persistence.EntityManager;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -17,14 +17,8 @@ public class DBNoteRepositoryTest {
 	@Mock
 	private EntityManager entityManager;
 	
+	@InjectMocks
 	private DBNoteRepository repositoryUT;
-	
-	@Before
-	public void setUp() {
-		repositoryUT = new DBNoteRepository();
-		repositoryUT.setEntityManager(entityManager);
-	}
-	
 	
 	@Test
 	public void testSave() throws Exception {

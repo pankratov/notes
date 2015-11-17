@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -17,17 +18,12 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class TagsControllerTest {
 
+	@InjectMocks
 	private TagsController controllerUT;
 	
 	@Mock
 	private TagRepository mockedRepository;
 	
-	@Before
-	public void setUp() {
-		controllerUT = new TagsController();
-		controllerUT.setTagRepository(mockedRepository);
-	}
-
 	@Test
 	public void testReadAll() throws Exception {
 		Tag tag1 = new Tag();

@@ -3,9 +3,9 @@ package ru.pankratov.notes.presentation.rest;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -19,17 +19,13 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class NotesControllerTest {
 	
+	
+	@InjectMocks
 	private NotesController controllerUT;
 	
 	@Mock
 	private NoteRepository mockedRepository;
 	
-	@Before
-	public void setUp() {
-		controllerUT = new NotesController();
-		controllerUT.setNoteRepository(mockedRepository);
-	}
-
 	@Test
 	public void testCreate() throws Exception {
 
@@ -48,7 +44,7 @@ public class NotesControllerTest {
 	}
 
 	@Test
-	public void testReadAll() throws Exception {
+	public void testReadAll()  {
 		Note note1 = new Note();
 		Note note2 = new Note();
 		when(mockedRepository.findAll()).thenReturn(Arrays.asList(note1, note2));
