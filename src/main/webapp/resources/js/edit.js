@@ -16,17 +16,20 @@ function AppViewModel() {
 	self.title = ko.observable("");
 	self.body = ko.observable("");
 	self.checkedTags = ko.observableArray([]);
-	self.alert = ko.observable(false);
 	self.alertMsg = ko.observable({error: ""});
+	self.alert = ko.computed(function(){
+		return self.alertMsg().error != "";
+	});
 	
 	$.getJSON("rest/tags", function(data) {
         self.tags(data);
     });
 	
 	self.addNote = function() {
+		self.alertMsg({error: ""});
 		var data = {
-				title: ko.toJS(self.title),
-				body: ko.toJS(self.body),
+				title: self.title(),
+				body: self.body(),
 				tags: ko.toJS(self.checkedTags)
 		};
 			
@@ -35,11 +38,9 @@ function AppViewModel() {
 					self.body("");
 					self.title("");
 					self.checkedTags([]);
-					self.alert(false);
 				}, 
 				function(response, status, error) {
-					self.alert(true);
-					self.alertMsg(JSON.parse(response.responseText));
+					self.alertMsg(response.responseJSON);
 				}
 		);
 	}
