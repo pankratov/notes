@@ -3,7 +3,7 @@ package ru.pankratov.notes.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +16,8 @@ import ru.pankratov.notes.domain.Tag;
  *
  */
 @Component
-@Qualifier("inMemory")
 @Scope
+@Profile("inMemory")
 public class InMemoryTagRepository implements TagRepository {
 	
 	private List<Tag> tags = new ArrayList<Tag>();

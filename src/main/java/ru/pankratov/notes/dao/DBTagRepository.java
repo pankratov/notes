@@ -5,13 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import ru.pankratov.notes.domain.Tag;
 
 @Repository
-@Qualifier("db")
+@Profile("db")
 public class DBTagRepository implements TagRepository {
 
 	@PersistenceContext
