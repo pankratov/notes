@@ -30,7 +30,7 @@ public class WebAppInitializer extends
 		WebApplicationContext context = (WebApplicationContext) super
 				.createRootApplicationContext();
 		((ConfigurableEnvironment) context.getEnvironment())
-				.setDefaultProfiles("db");
+				.setDefaultProfiles("db", "prod");
 		return context;
 	}
 
